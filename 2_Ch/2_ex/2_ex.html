@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>2_ex</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+</head>
+<body>
+
+What do you love?
+<select ng-model="choice">
+  <option value="dogs">Dogs</option>
+  <option value="cats">Cats</option>
+  <option value="dogs and cats">Dogs and Cats</option>
+  <option value="neither">neither</option>
+</select>
+<h3>I love {{choice}} &hearts;</h3>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="contactApp" ng-controller="contactController">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact List</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+		<script src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>CONTACTS APP</h1>
+	<!-- <div ng-controller="contactController"> -->
+		<table>
+			<tr>
+			<form ng-submit="addContact()">
+				<td>Name<input type="text" ng-model="contact.name" autofocus></td>
+				<td>Email<input type="text" ng-model="contact.email"></td>
+				<td>Phone<input type="text" ng-model="contact.phone"></td>
+				<td><input type="submit" value="Submit"></td>
+			</form>
+				<td>Search <input ng-model="query">
+				</td>
+			</tr>
+		</table>
+	<div class="tableColor">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+			</tr>
+			<tr ng-repeat="newContact in newContacts | filter:query" >
+				<td>{{newContact.name}}</td>
+				<td>{{newContact.email}}</td>
+				<td>{{newContact.phone}}</td>
+			</tr>
+		</table>
+	</div>
+	<!-- </div> -->
+</body>
+</html>

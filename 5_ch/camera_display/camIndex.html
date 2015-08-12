@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="camApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Cameras Index</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+	<script src="app.js"></script>
+	<style>
+	.highlight{
+		color: orange;
+	}
+	ul
+	{
+    list-style-type: none;
+	}
+	</style>
+</head>
+<body>
+<h1>Camera Shop</h1>
+
+<select ng-model="sort">
+	<option value="rating">Rating</option>
+	<option value="price">Price</option>
+</select>
+
+	<div ng-controller="camController">
+		<ul>
+
+			<li ng-repeat="camera in cameras | orderBy: sort">
+				<img ng-src="{{camera.image}}" alt="{{camera.title}" width="100px"/>
+				<h3>{{camera.title}}</h3>
+				<p>
+					<div ng-class="{highlight: {{camera.onSale == true}}}">Price: {{camera.price}}</div>
+					<div ng-class="{highlight: {{camera.onSale == true}}}" ng-show="camera.onSale == true">ON SALE!!</div>
+				</p>
+				<p>Rating: {{camera.rating}}</p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

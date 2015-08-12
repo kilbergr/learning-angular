@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HPApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Ch 5 Ex 1</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+		<script src="1_ex_app.js"></script>
+		<style>
+		.highlightValid {
+        color: green;
+    }
+		.highlightInvalid {
+        color: red;
+    }
+		</style>
+</head>
+<body>
+    <div ng-controller="HarryPotterController">
+        <ul>
+	        <li ng-repeat="name in names">
+	            {{name}}
+	         </li>
+	         <li ng-repeat="dupe in dupes track by $index">
+	            {{dupe}}
+	         </li>
+	       		<li ng-repeat="symbol in symbols">
+	            {{symbol}}
+	         </li>
+	         <li ng-repeat="(key, value) in scope">
+	         		{{key}}: {{value}}
+	         </li>
+	         
+    		</ul>
+    </div>
+		<h3>Sign up page (Password Needed)</h3>
+		<input type="text" ng-model="pw" ng-class="{highlightInvalid: pw.length<6, highlightValid: pw.length >=6}">
+	    
+	    <div ng-show="pw.length>=0" ng-class="{highlightInvalid: pw.length<6, highlightValid: pw.length >=6}">
+	    <p>Your password is {{pw.length}} characters!</p>
+	    </div>
+			<div ng-show="pw.length >=6"> 
+			<button>Sign Up!</button>
+			</div>
+			<div ng-show="pw.length < 6">Password is invalid!
+			</div>
+
+    
+
+</body>
+</html>

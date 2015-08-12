@@ -1,0 +1,18 @@
+.highlight
+{
+	color: orange;
+}
+
+.board {
+	background-color: lightblue;
+	height: 200px;
+	width: 200px;
+	text-align: center;
+}
+
+.win {
+	background-color: pink;
+	height: 200px;
+	width: 200px;
+	text-align: center;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>2_ex</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+</head>
+<body>
+<h3>How many digits of pi do you want? </h3>
+<select ng-model="dig">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+</select>
+
+<p>Here you go! </p>
+<p>The first {{dig}} digits of pi!</p>
+{{3.14159265359 | number:dig}}
+
+</body>
+</html>
+
+<!-- <p ng-model="digits">The first {{dig}}  of pi!</p>
+{{3.14159265359 | number:dig}}
+ <ng-pluralize count="digits"
+                when="{'1': 'digit',
+                       'other': '{} digits'}">
+  </ng-pluralize><br>
+ -->

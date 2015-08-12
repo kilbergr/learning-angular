@@ -1,0 +1,88 @@
+Unit I  
+Lesson I  
+
+* Why learn Angular JS over other frameworks like Ember, Backbone, Knockout, etc?  
+It requires fewer characters and less code than other frameworks and does not require getters and setters. Angular is a full framework, so you sacrifice flexibility for the ability to rely more on the framework. Angular also provides the connections between MVC components, rather than requiring the programmer to write them. In addition, Angular puts markup directly into the DOM, making templates unnecessary. Angular also uses plain Javascript objects in the models. This makes it easy to mess around with and use existing data.
+It seems like some people see Angular's use of dependency injection as a pro and some as a con. Dependency injection is also known as inversion of control because instead of having the object build or find its own dependencies, you pass them to it via the constructor or property setters.  
+
+* People have some very strong opinions about Angular. What are 3 common complaints people have about Angular?   
+First of all, some point to dependency injection (discussed above) based on parameter names as a con because it stops working once code is minified.  
+There's also a very high learning curve to get started with Angular. To this point, some say it's overly complex and uses different definitions for many words and phrases that already have standard meanings in other languages.   
+Others complain that Angular uses two-way data binding, which can both slow down the application and causes confusion because it is not explicit. Depending on the runtime state of the program, the same inputs can refer to different things even if they are in the same code.    
+
+* Is Angular an MVC framework?  
+Yes.
+
+* Why did I say jQuery is "sort of" a dependency of Angular? Does it depend on it or not?!  
+You can use jQuery, but sometimes it's seen as an unnecessary crutch. Many of the things that Angular does are commonly accomplished using jQuery, so many programmers (especially beginners) who are more used to jQuery continue to use it despite Angular offering easier ways to accomplish the same stuff. Angular does not depend on jQuery, but it is easy to use it as though it does.
+
+* Read the docs for ng-app. What is it and what does it do?  
+The ng-app is a directive that designates the root element of an AngularJS application, under which directives can be used to declare bindings and define behavior. It allows you to auto-bootstrap ONE Angular app to an HTML document, although you can manually bootstrap more.   
+
+* What does ng-model do?  
+The ngModel directive binds an input, select, textarea (or custom form control) to a property on the scope using NgModelController, which is created and executed by this directive. This is responsible for connecting the view to the model. It is also responsible for validation, setting certain CSS classes and control states, and registering the controll with its parent form.
+
+* What is "dirty checking"?   
+Dirty checking is a process where snapshots of data over time are compared to see if anything has changed. Dirty checking is also known as the digest cycle--which is essentially a loop that checks for changes on variables watched by $scopes. If you have $scope.myVar defined in your controller and this variable was marked for being watched, then you are explicitly telling Angular to monitor the changes on myVar in each iteration of the loop. More information here: http://stackoverflow.com/questions/15112584/using-scope-watch-and-scope-apply/15113029#15113029
+
+* Find a way to set the initial value of "name" as "BoJack"(without writing a controller).  
+<input type="text" placeholder="What is your name" ng-model="name" ng-init="name='BoJack'">  
+
+* What are those {{ }} expressions? Are they Handlebars?  
+Those are Angular markup braces, which bind expressions to elements is built-in Angular markup. This allows you to pass dynamic data into your templates. It's kind of similar to #{} in rails or <%=  %> in express.  
+
+* Explain what 2-way data binding is.  
+Data binding is automatic synchronization of data between model and views. Many template systems check model and template to create the view. 2-way data binding checks the view as well so that the model reflects all changes made to the view and vice versa.  This should make testing easier, and make it possible for a programmer to look exclusively at the model to see the app's state.  
+
+* BONUS: Research the $digest loop (See dirty checking above)  
+
+* With one single expression, prove that the context angular expressions run is not the window object. What is it instead?  
+window.alert({{something}})  
+In general in Angular, expressions are evaluated against a scope object.  
+It is not possible to access a Window object from an angular expression unless a window or some DOM object that has a reference to window is published onto a Scope.
+
+* What are Angular expressions? How do they compare to EJS/ERB tags?  
+Angular expressions are similar to EJS/ERB tags except you cannot execute logic within them.  
+
+* What happens when you write invalid code in an expression? What type of error do you get?   
+It defaults to null and you get a syntax error expression.   
+
+* What are Angular filters? Name 4 built-in filters, including one that we haven't used yet.  Angular filters change the way something is displayed to the user.  4 built in filters are currency (shows a number as a currency), lowercase (displays string in lowercase), uppercase (ditto in uppercase), and orderBy (orders an array by an element).  
+
+We'll soon see how to create custom filters. What is a use case for a custom filter?  
+
+* What are Angular modules? Why use them?  
+Angular apps lack the typical central method that unites all the different parts of an application. Instead, Angular uses modules to declaratively specify how the app should be bootstrapped. These modules are intended to make the app easier to understand, allows for recycling of modules, ordered module loading, unit tests that only load the modules their units actually need, and overriding configuration for complete tests.
+
+* What the hell is $scope?   
+$scope is a JS object that refers to the application model and connects the controllers and views, is the execution context for expressions and can watch expressions and events. Properties on the $scope object are available to both.  
+
+* What are Angular modules?  
+See above  
+
+TTTTTTTTTTT
+* Why do we pass in $scope as an argument to controller (callback?!) functions?   
+Each controller has its own $scope, which is   
+
+* Try using ng-repeat to iterate through an array with some duplicates, like [1,1,2,5,6,9,9,9].   
+Error: Duplicates in a repeater are not allowed. Use 'track by' expression to specify unique keys. To fix, add track by $index to the end of the expression.   
+
+* What does Angular do to hide an element that is hidden by ng-show/hide?   
+It adds class "ng-hide" to that div.  
+
+* Why use ng-src and ng-href?  
+Because using straight src and href tags can cause errors. Angular has to replace expressions with their values, but it's possible for users to click the expressions before the values load. This is avoided by using ng directives.  
+
+* What are directives?  
+Directives are the way Angular adds functionality to HTML. They are put on elements in the DOM and Angular's HTML compiler then goes through and matches directives to DOM elements and assigns them certain behavior.   
+
+* Does ng-class require an object to be passed in?  
+No--it can be a string.
+
+* What order does an ng-repeat display items in?  
+By default it displays them either in the order the keys were defined for the object.  
+
+* How does ng-repeat handle duplicate data?  See above
+
+
+

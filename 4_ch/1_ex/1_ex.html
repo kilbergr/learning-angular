@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="firstApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Ch 4 Ex 1</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+		<script src="app.js"></script>
+</head>
+<body>
+    <div ng-controller="ExercisesController">
+        <h1>My favorite color is: {{FavColor}}</h1>
+         <h3>There are {{secondsInACentury | number : fractionSize}} seconds in a century</h3>
+         <h4>Right now it is {{rightNow | date : fullDate}}</h4>
+         </div>
+
+</body>
+</html>

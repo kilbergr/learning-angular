@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ex1</title>
+	<script language = "javascript" type = "text/javascript">
+	function showName(){
+		document.getElementById("name").innerHTML=document.getElementById("inputText").value
+
+	}
+	</script>
+</head>
+<body>
+		<input type="text" name="name" id="inputText" placeholder="What is your name?" onKeyUp = "showName();">
+	<h1>My name is: <div id="name"></div></h1>
+</body>
+</html>
