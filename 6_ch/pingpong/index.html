@@ -10,6 +10,10 @@
 
 <body>
 	<h1>Ping Pong Scoreboard</h1>
+	<div ng-show="luck<100" class="rub" ng-mouseover="luck = luck+1" ng-init="luck=0">
+	<p>Rub for good luck!!</p>
+	<p>You have this much good luck: {{luck}}</p>
+	</div>
 	<div ng-controller="playerController"> 	
 		<table>
 			<tr>	
