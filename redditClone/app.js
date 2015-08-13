@@ -1,6 +1,12 @@
-var app = angular.module("redditApp", []);
+var app = angular.module("redditApp", ['ngMdIcons', 'ngAnimate'])
+// .config(function($momentProvider){
+//     $momentProvider
+//       .asyncLoading(false)
+//       .scriptUrl('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js');
+//   });
+
 app.controller("postController", function($scope){
-	'user strict';
+	'use strict';
 	$scope.posts = new Array();
 
 	$scope.addPost = function(){
@@ -9,6 +15,7 @@ app.controller("postController", function($scope){
 				title: $scope.post.title,
 				content: $scope.post.content,
 				image: $scope.post.image,
+				author: $scope.post.author,
 				date: new Date(),
 				comments: [],
 				showCommentForm: false,
@@ -16,6 +23,7 @@ app.controller("postController", function($scope){
 				votes: 0})
 				if($scope.posts[$scope.posts.length-1]){
 					$scope.post.title = '';
+					$scope.post.author = '';
 					$scope.post.content = '';
 					$scope.post.image = '';
 			}
@@ -26,14 +34,20 @@ app.controller("postController", function($scope){
 	}
 
 	$scope.addComment = function(){
-		debugger;
 		this.post.comments.push({
 			author: this.post.comment.author,
 			content: this.post.comment.content
 		})
 		this.post.comment.author = '';
 		this.post.comment.content = '';
-		console.log(this.post.comments);
+		// console.log(this.post.comments);
+	}
+
+	$scope.addVote = function(){
+		this.post.votes +=1;
+	}
+	$scope.removeVote = function(){
+		this.post.votes -=1;
 	}
 })
 
