@@ -21,10 +21,10 @@
 </div>
 
 <div ng-show="showform==true">
-	<form novalidate class="form-style" name = "postform" ng-submit="addPost()">
+	<form novalidate class="form-style" name = "postform" >
 				<div>Title<input type="text" ng-model="post.title" autofocus required>
 				Content<input type="text" ng-model="post.content" required>Image<input type="text" ng-model="post.image" required>
-				<input type="submit" value="Submit" ng-click="showform=false" ng-disabled="postform.title.$invalid || postform.content.$invalid || postform.image.$invalid"></div>
+				<input type="submit" value="Submit" ng-click="addPost(); showform = false"></div>
 		</form>
 </div>
 
@@ -34,16 +34,23 @@
 		<div class="postContent">
 		<h3>{{post.title}}</h3>
 		<p>{{post.content}}</p>
-		{{post.date | date : fullDate}} | {{post.comments}} | <button ng-click="post.showCommentForm=true">+ Comment</button>
+		{{post.date | date : fullDate}} | 
+		<button ng-show="post.showComments==false" ng-click="post.showComments=true">View Comments</button> 
+		<button ng-show="post.showComments==true" ng-click="post.showComments=false">Hide Comments</button> | 
+		<button ng-click="post.showCommentForm=true">+ Comment</button>
 		</div>
 <!-- Add comment form if comment button clicked -->
 		<div ng-show="post.showCommentForm==true" class="commentDiv">
-			<form novalidate class="form-style" name = "commentform" ng-submit="post.addComment()">
+			<form novalidate class="form-style" name = "commentform">
 				<div>Author<input type="text" ng-model="post.comment.author" autofocus required>
-				Comment<input type="text" ng-model="post.comment.comment" required><input type="submit" value="Submit" ng-click="post.showCommentForm=false"></div>
+				Comment<input type="text" ng-model="post.comment.content" required><input type="submit" value="Submit" ng-click="addComment(); post.showCommentForm=false"></div>
 			</form>
 		</div>
-
+<!-- Show comments if view comments is clicked -->
+	<div ng-show="post.showComments==true" class="commentDiv" ng-repeat="comment in post.comments">
+		<p>{{comment.content}}</p>
+		<h5>--{{comment.author}}</h5>
+	</div>
 </div>
 
 </body>
