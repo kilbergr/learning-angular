@@ -63,8 +63,9 @@ body {
 .postDiv{
 	margin: 2%;
 	width:85%;
-	background-color: #D3D9DB;
+	background-color: #9FF0D4;
 	height: auto;
+	padding: 5px;
 }
 .postDiv.ng-move,
 .postDiv.ng-enter,
@@ -89,7 +90,7 @@ body {
 	margin: 5px;
 	width:50%;
 	overflow: auto;
-	background-color: #D3D9DB;
+	background-color: #9FF0D4;
 }
 .commentDiv.ng-move,
 .commentDiv.ng-enter,

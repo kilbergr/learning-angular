@@ -7,7 +7,7 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.5.0/angular-material-icons.min.js"></script> 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.min.js"></script>
-		<!-- <script src="app/bower_components/angular-momentjs/angular-momentjs.js"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="app.js"></script>
@@ -19,7 +19,7 @@
 		<p class="title">Reddit Clone</p>
 			
 			<!-- Sort by various filters -->
-			Search Content: <input ng-model="query">
+			Search by: <input ng-model="query">
 			Sort by: <select ng-model="sort">
 				<option value="votes">Votes</option>
 				<option value="date">Date</option>
@@ -33,7 +33,9 @@
 	<div ng-show="showform==true">
 		<form novalidate class=".form-control" name = "postform" >
 					<div>Title<input type="text" ng-model="post.title" autofocus required>
-					Content<input type="text" ng-model="post.content" required>Image<input type="text" ng-model="post.image" required>
+					Content<input type="text" ng-model="post.content" required>
+					Image<input type="text" ng-model="post.image" required>
+					Author<input type="text" ng-model="post.author" required>
 					<input class="btn btn-default" type="submit" value="Submit" ng-click="addPost(); showform = false"></div>
 			</form>
 	</div>
@@ -51,7 +53,7 @@
 			</h3>
 			<p>{{post.content}}</p>
 			<!-- navBar for each post -->
-				<div am-time-ago="post.date">{{post.date | date: fullDate}} | 
+				<div am-time-ago="post.date">{{post.date | date: fullDate}}</div>  
 				<button class="btn btn-default" ng-show="post.showComments==false" ng-click="post.showComments=true">
 				<ng-pluralize count="post.comments.length"
 	                 when="{'0': 'No Comments yet!',
@@ -60,8 +62,7 @@
 				</ng-pluralize></button> 
 				<button class="btn btn-default" ng-show="post.showComments==true" ng-click="post.showComments=false">Hide Comments</button> | 
 				<button class="btn btn-default" ng-click="post.showCommentForm=true">+ Comment</button>
-				</div>
-			</div>
+			
 	<!-- Add comment form if comment button clicked -->
 			<div ng-show="post.showCommentForm==true" class="commentDiv" >
 				<form novalidate class=".form-control" name = "commentform">
