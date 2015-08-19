@@ -16,10 +16,10 @@
 <body class="container">
 	<div class="nav">
 		<div class="navContent">
-		<p class="title">Reddit Clone</p>
+		<p class="title">Have you readdit clone</p>
 			
 			<!-- Sort by various filters -->
-			Search by: <input ng-model="query">
+			<ng-md-icon icon="search" size="18"></ng-md-icon> Search: <input ng-model="query">
 			Sort by: <select ng-model="sort">
 				<option value="votes">Votes</option>
 				<option value="date">Date</option>
@@ -27,6 +27,10 @@
 				<option value="author">Author</option>
 			</select>
 			<button class="btn btn-default right" ng-click="showform=true">+ Post</button>
+			<!-- Ascending or descending -->
+			<ng-md-icon icon="keyboard_arrow_up" size="18" ng-click="ascending=true"></ng-md-icon>
+		<ng-md-icon icon="keyboard_arrow_down" size="18" ng-click="ascending=false"></ng-md-icon>
+
 		</div>
 	</div>
 
@@ -40,18 +44,20 @@
 			</form>
 	</div>
 
-
-	<div ng-repeat="post in posts | orderBy: sort | filter:query" class="postDiv">
+	
+	<div ng-if="ascending==true" ng-repeat="post in posts | orderBy: sort | filter:query" class="postDiv">
+<!-- 	<div ng-if="ascending==false" ng-repeat="post in posts | orderBy: sort | filter:query" class="postDiv"> -->
+	
 			<div><img class="image" ng-src="{{post.image}}" alt="{{post.title}}"></div>
-			<div class="postDiv">
 			<h3>{{post.title}} &nbsp;
-				
+		
 					<ng-md-icon icon="thumb_up" size="18" ng-click="addVote()"></ng-md-icon>
 					<div ng-class="{upVote: post.votes>0, downVote: post.votes<0, voteDiv: post.votes==0}">{{post.votes}}</div>
 					<ng-md-icon icon="thumb_down" size="18" ng-click="removeVote()"></ng-md-icon>
 			
 			</h3>
 			<p>{{post.content}}</p>
+			<h6>--posted by {{post.author}}</h6>
 			<!-- navBar for each post -->
 				<div am-time-ago="post.date">{{post.date | date: fullDate}}</div>  
 				<button class="btn btn-default" ng-show="post.showComments==false" ng-click="post.showComments=true">
@@ -60,7 +66,7 @@
 	                     'one': 'View Comment',
 	                     'other': 'View {} Comments'}">
 				</ng-pluralize></button> 
-				<button class="btn btn-default" ng-show="post.showComments==true" ng-click="post.showComments=false">Hide Comments</button> | 
+				<button class="btn btn-default" ng-show="post.showComments==true" ng-click="post.showComments=false">Hide Comments</button>  
 				<button class="btn btn-default" ng-click="post.showCommentForm=true">+ Comment</button>
 			
 	<!-- Add comment form if comment button clicked -->
@@ -72,8 +78,9 @@
 			</div>
 	<!-- Show comments if view comments is clicked -->
 		<div ng-show="post.showComments==true" class="commentDiv" ng-repeat="comment in post.comments" >
-			<p>{{comment.content}}</p>
+			<li ng-animate="'animate'">{{comment.content}}
 			<h5>--{{comment.author}}</h5>
+			</li>
 		</div>
 	</div>
 

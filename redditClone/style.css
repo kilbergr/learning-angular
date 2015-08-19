@@ -3,7 +3,7 @@ body {
 	font-size: 14px;
 	text-align: left;
 	margin: 5px;
-	background-color: #CBF7E8;
+	background-color: #FFF;
 }
 
 .container{
@@ -12,10 +12,11 @@ body {
 }
 
 .nav {
-	width: 90%;
+	width: 100%;
 	height: 100px;
-	background-color: #ED5571;
+	background-color: #24D4CB;
 	margin: 5px;
+	margin-left: 5%;
 }
 
 .right{
@@ -30,11 +31,11 @@ body {
 	font-size: 28px;
 }
 .btn-default{
-	background-color: #f9c8d1;
+	background-color: #24D4CB;
 }
 
 .btn-default:hover{
-	background-color: #f18398;
+	background-color: #b6f3ef;
 }
 
 .image {
@@ -60,14 +61,19 @@ body {
 	display: inline;
 }
 
+li {
+	list-style-type: none;
+}
+
 .postDiv{
-	margin: 2%;
+	margin-left: 13%;
+	margin-right: 7%;
+	margin-bottom: 2%;
 	width:85%;
-	background-color: #9FF0D4;
-	height: auto;
+	background-color: #b6f3ef;
 	padding: 5px;
 }
-.postDiv.ng-move,
+/*.postDiv.ng-move,
 .postDiv.ng-enter,
 .postDiv.ng-leave {
   -webkit-transition:all linear 0.5s;
@@ -84,13 +90,13 @@ body {
 .postDiv.ng-move.ng-move-active,
 .postDiv.ng-enter.ng-enter-active {
   opacity:1;
-}
+}*/
 
 .commentDiv{
 	margin: 5px;
 	width:50%;
 	overflow: auto;
-	background-color: #9FF0D4;
+	background-color: #b6f3ef;
 }
 .commentDiv.ng-move,
 .commentDiv.ng-enter,
@@ -110,4 +116,60 @@ body {
 .commentDiv.ng-enter.ng-enter-active {
   opacity:1;
 }
+
+.postDiv.ng-move,
+.postDiv.ng-enter,
+.postDiv.ng-leave 
+{ 
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+} 
+ 
+
+.postDiv.ng-leave,
+.postDiv.ng-move.ng-move-active,
+.postDiv.ng-enter.ng-enter-active {
+    opacity: 1;
+    bottom: 0;
+    height: 30px;
+}
+ 
+.postDiv.ng-leave.ng-leave-active,
+.postDiv.ng-move,
+.postDiv.ng-enter  {
+    opacity: 0;
+    bottom: -50px;
+    height: 0px;
+}
+
+.animate-enter, 
+.animate-leave
+{ 
+    -webkit-transition: 675ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 675ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 675ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 675ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 675ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+} 
+
+.animate-enter.animate-enter-active, 
+.animate-leave {
+    opacity: 1;
+    bottom: 0;
+    height: 30px;
+}
+
+.animate-leave.animate-leave-active,
+.animate-enter {
+    opacity: 0;
+    bottom: -50px;
+    height: 0px;
+}	
 
